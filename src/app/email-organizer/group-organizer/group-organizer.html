@@ -1,0 +1,47 @@
+<div class="header">
+    <button class="create-btn" (click)="openCreateGroupPopup()">+ Create Group</button>
+  </div>
+  <div class="group-container">
+    @for (group of groups; track group.name; let i = $index) {
+      <div 
+        class="group-card"
+        [ngStyle]="{ 'background': groupGradients[i % groupGradients.length] }"
+        (click)="goToGroup(group)"
+        >
+        
+        <span class="group-name" (click)="goToGroup(group)">
+          {{ group.name }}
+        </span>
+  
+        <button class="delete-btn" (click)="deleteGroup(i)">✕</button>
+      </div>
+    }
+  </div>
+
+  @if (showCreateGroup) {
+    <div class="modal">
+      <div class="modal-content">
+        <h3 style="color: black;">Create Group</h3>
+  
+        <form [formGroup]="groupForm" (ngSubmit)="createGroup()">
+          <label for="name" style="color: black;">Group Name</label>
+          <input id="name" formControlName="name" type="text" />
+          <div class="error" *ngIf="groupForm.controls['name'].invalid && groupForm.controls['name'].touched">
+            Group name is required.
+          </div>
+  
+          <label for="keywords" style="color: black;">Keywords (comma-separated)</label>
+          <input id="keywords" formControlName="keywords" type="text" />
+          <div class="error" *ngIf="groupForm.controls['keywords'].invalid && groupForm.controls['keywords'].touched">
+            Keywords are required.
+          </div>
+  
+          <div class="modal-actions">
+            <button type="submit" [disabled]="groupForm.invalid">Create</button>
+            <button class="cancel" type="button" (click)="closeCreateGroupPopup()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+  

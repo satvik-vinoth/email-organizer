@@ -1,0 +1,41 @@
+<form [formGroup]="composeForm" (ngSubmit)="sendEmail()" class="compose-container">
+    <div class="left-compose">
+        <div class="form-row">
+        <label>To</label>
+        <input type="email" formControlName="to" placeholder="recipient@example.com"/>
+        @if (composeForm.get('to')?.touched && composeForm.get('to')?.invalid) {
+            <div class="error" style="color:red">Please enter a valid email address.</div>
+        }
+        </div>
+        <div class="form-row">
+      <label>Subject:</label>
+      <input formControlName="subject" placeholder="Enter subject" />
+      </div>
+      <div class="textarea-container">
+        <label>Body:</label>
+        <textarea formControlName="body" placeholder="Write your message..."></textarea>
+        <div class="voice-controls" style="margin-top: 8px; color: white;">
+          <button type="button" (click)="startListening()" [disabled]="isListening">🎤 Start Speaking</button>
+          <button type="button" (click)="stopListening()" [disabled]="!isListening">🛑 Stop</button>
+          <span *ngIf="isListening" class="listening-text">Listening...</span>
+        </div>
+      </div>   
+      <button type="submit" [disabled]="composeForm.invalid">Send</button>
+    </div>
+  
+    <div class="right-history">
+      <h3>Previous Emails to {{ composeForm.get('to')?.value }}</h3>
+  
+      @if (pastEmails.length === 0) {
+        <div class="no">No past emails.</div>
+      } @else {
+        <div class="hover">
+          <div *ngFor="let email of pastEmails" class="email-snippet" (click)="loadEmail(email)">
+            <strong>Subject: {{ decodeHtmlEntities(getSubject(email)) }}</strong>
+            <p>Snippet: {{ decodeHtmlEntities(email.snippet) }}</p>                  
+          </div>
+        </div>
+      }
+    </div>
+  </form>
+  

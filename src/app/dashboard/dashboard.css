@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+}
+h2{
+  padding-left: 3rem;
+  font-family: 'Orbitron', sans-serif;
+}
+h3{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+}
+.nav-bar2{
+  display: flex;
+  gap: 1rem;
+  margin-right: 3rem;
+}
+.nav-bar2 h3{
+  cursor: pointer;
+  border: 1px solid white;
+}
+.nav-bar2 h3:hover{
+  background-color: grey;
+}
+.dashboard {
+    margin: 2rem auto;
+    font-family: Arial, sans-serif;
+  }
+
+
+.same{
+  margin-left:3rem;
+  margin-right:3rem;
+}
+  .email-list {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ccc;
+  }
+  
+  .email-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .email-item:hover {
+    background:#3c3c4e;
+  }
+  
+  .subject {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+  }
+  
+  
+  
+  .from {
+    font-size: 0.9rem;
+    color: #ffffff;
+  }
+  
+  
+  

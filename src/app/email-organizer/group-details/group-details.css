@@ -1,0 +1,47 @@
+.form-group {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+  }
+
+  .same{
+    margin-left:3rem;
+    margin-right:3rem;
+  }
+    .email-list {
+      list-style: none;
+      padding: 0;
+      border: 1px solid #ccc;
+      color:white,
+    }
+    
+    .email-item {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .email-item:hover {
+      background:#3c3c4e;
+    }
+    
+    .subject {
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+    
+    
+    
+    .from {
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    .label{
+      padding-left: 1rem;
+    }
+    .b{
+      margin-left: 1rem;
+    }

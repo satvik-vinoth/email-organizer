@@ -1,0 +1,42 @@
+<form [formGroup]="dateForm" (ngSubmit)="showEmails()">
+    <div class="form-group">
+    <label>
+      From:
+      <input type="date" formControlName="fromDate" />
+    </label>
+  
+    <label class="label">
+      To:
+      <input type="date" formControlName="toDate" />
+    </label>
+  
+    <button class="b" type="submit" [disabled]="!dateForm.valid">Analyze</button>
+    </div>
+</form>
+
+@if (show) {
+    @if (emails.length > 0) {
+      <div class="same">
+        <ul class="email-list">
+          @for (email of emails; track email.id) {
+            <li class="email-item">
+              <div class="from">
+                From: {{ decodeHtmlEntities(getHeader(email.payload.headers, 'From')) }}
+              </div>
+              <div class="subject">
+                Subject: {{ decodeHtmlEntities(getHeader(email.payload.headers, 'Subject') || '(No Subject)') }}
+              </div>
+              <div class="subject">
+                {{ decodeHtmlEntities(email.snippet) }}
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    } @else {
+      <div class="same" style="text-align: center; color: #ccc; margin-top: 2rem;">
+        No emails found.
+      </div>
+    }
+  }
+  

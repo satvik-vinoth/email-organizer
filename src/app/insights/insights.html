@@ -1,0 +1,49 @@
+<form [formGroup]="dateForm" (ngSubmit)="analyzeEmails()">
+    <div class="form-group">
+    <label>
+      From:
+      <input type="date" formControlName="fromDate" />
+    </label>
+  
+    <label>
+      To:
+      <input type="date" formControlName="toDate" />
+    </label>
+  
+    <button type="submit" [disabled]="!dateForm.valid">Analyze</button>
+    </div>
+</form>
+
+  @if (results?.length>0){
+    <div class="total">Total number of recieved emails : {{total}}</div>
+    <div class="insights-container">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Email Address</th>
+              <th>Times Contacted</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (sender of results; track sender.email) {
+              <tr>
+                <td>{{ sender.email }}</td>
+                <td>{{ sender.count }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    
+      <div class="chart-container">
+        <canvas baseChart 
+                [data]="pieChartData"
+                [type]="pieChartType"
+                [options]="pieChartOptions">
+        </canvas>
+      </div>
+    </div>   
+
+  }
+

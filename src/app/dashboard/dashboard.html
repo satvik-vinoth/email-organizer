@@ -1,0 +1,38 @@
+<div class="dashboard">
+    <div class="nav-bar">
+        <h2>INBOX </h2>
+        <div class="nav-bar2">
+        <h3 (click)="organize()">Organize</h3>
+        <h3 (click)="Insights()">Insights</h3>
+        <h3 (click)="compose()">Compose</h3>
+        <h3 (click)="logout()">Logout</h3>
+        </div>
+    </div>
+    @if (loading){
+        <div class="loading" style="padding: 3rem;">Loading.....</div>
+    }
+    @if (!loading && emails.length===0){
+        <div class="no-emails" style="padding: 3rem;">No emails Found</div>
+    }
+    @if (!loading && emails.length>0){
+        <div class="same">
+            <ul class="email-list">
+                @for (email of emails; track email.id){
+                    <li class="email-item">
+                        <div class="from">
+                            From: {{ decodeHtmlEntities(getHeader(email.payload.headers, 'From') )}}
+                        </div>
+                        <div class="subject">
+                            Subject: {{ decodeHtmlEntities(getHeader(email.payload.headers, 'Subject') || '(No Subject)' )}}
+                        </div>
+                        
+                        <div class="subject">
+                            {{ decodeHtmlEntities(email.snippet) }}
+                        </div>
+
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

@@ -1,0 +1,15 @@
+body {
+  background: linear-gradient(135deg, #000000, #380054);
+    background: linear-gradient(135deg, #000000, #373737);
+
+    color: white;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+ 
+
+
+  html, body, app-root {
+    height: 100%;
+  }
+  
